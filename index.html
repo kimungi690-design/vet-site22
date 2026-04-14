@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карьерный навигатор | Ветеринарный врач</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #FFF9F9; color: #5A4A4A; line-height: 1.5; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .header {
+            background: linear-gradient(135deg, #FFD9E6 0%, #C5E4FF 100%);
+            text-align: center;
+            padding: 60px 20px 80px;
+            border-radius: 0 0 60px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        .header::before { content: "🐾🐾🐾"; font-size: 120px; position: absolute; bottom: -30px; left: -30px; opacity: 0.1; }
+        .header::after { content: "🐕🐈🐄"; font-size: 100px; position: absolute; top: 20px; right: -20px; opacity: 0.1; }
+        .header h1 { font-size: 3rem; font-weight: 800; margin-bottom: 16px; background: linear-gradient(135deg, #E27E8F, #7AA9C4); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .header p { font-size: 1.4rem; max-width: 700px; margin: 0 auto; }
+        .hero-image { margin-top: 40px; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; font-size: 5rem; }
+        .btn { display: inline-block; background: #FFB7B2; color: #6B4E4E; padding: 14px 32px; border-radius: 40px; font-weight: 700; text-decoration: none; margin-top: 32px; transition: 0.2s; }
+        .btn:hover { background: #FF9A9A; transform: translateY(-3px); color: white; }
+        section { padding: 60px 0; border-bottom: 1px solid #FFE4E4; }
+        .section-title { text-align: center; font-size: 2.2rem; font-weight: 800; margin-bottom: 48px; color: #E27E8F; }
+        .section-title:after { content: '🐾'; font-size: 2rem; display: block; margin: 8px auto 0; }
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .card { border-radius: 32px; padding: 28px; transition: 0.2s; box-shadow: 0 8px 20px rgba(0,0,0,0.05); }
+        .card:hover { transform: translateY(-6px); }
+        .card-icon { font-size: 3rem; margin-bottom: 16px; }
+        .card h3 { font-size: 1.8rem; margin-bottom: 20px; font-weight: 800; }
+        .card ul { list-style: none; }
+        .card li { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+        .card li::before { content: "🌸"; }
+        .card.blue { background: #E0F0FF; color: #4A6A8A; }
+        .card.green { background: #E0F7E8; color: #4A6A5A; }
+        .card.yellow { background: #FFF2DD; color: #8A6A4A; }
+        .card.orange { background: #FFE4D6; color: #A56A4A; }
+        .card.purple { background: #F0E0FF; color: #6A4A8A; }
+        .career-ladder { background: #FFFAF0; border-radius: 48px; padding: 40px; }
+        .step { display: flex; justify-content: space-between; align-items: center; background: white; padding: 18px 24px; margin-bottom: 16px; border-radius: 60px; border: 1px solid #FFD9D9; }
+        .step-name { font-weight: 800; }
+        .step-salary { font-weight: 700; color: #E27E8F; background: #FFF0F0; padding: 6px 16px; border-radius: 40px; }
+        .arrow-up { text-align: center; font-size: 1.8rem; margin: -8px 0; color: #FFB7B2; }
+        .stats-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin: 40px 0; }
+        .stat-card { background: white; border-radius: 28px; padding: 28px 24px; text-align: center; flex: 1; min-width: 180px; border: 1px solid #FFE0E0; }
+        .stat-number { font-size: 2.8rem; font-weight: 800; color: #7AA9C4; }
+        .pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .pros, .cons { background: white; border-radius: 28px; padding: 28px; border: 1px solid #FFE4E4; }
+        .pros h3, .cons h3 { color: #E27E8F; margin-bottom: 20px; }
+        .pros ul, .cons ul { list-style: none; }
+        .pros li, .cons li { padding-left: 28px; position: relative; margin-bottom: 12px; }
+        .pros li::before { content: "🐶"; position: absolute; left: 0; }
+        .cons li::before { content: "🐱"; position: absolute; left: 0; }
+        .test-block { background: #FFFAF0; border-radius: 48px; padding: 40px; text-align: center; border: 1px solid #FFE0E0; }
+        .test-question { text-align: left; background: white; padding: 16px 20px; border-radius: 28px; margin: 20px 0; }
+        button { background: #FFB7B2; border: none; padding: 12px 32px; border-radius: 40px; font-weight: 700; cursor: pointer; transition: 0.2s; }
+        button:hover { background: #FF9A9A; color: white; }
+        .footer { background: #FFEFEF; text-align: center; padding: 40px 0; border-radius: 60px 60px 0 0; margin-top: 40px; }
+        .footer a { color: #E27E8F; text-decoration: none; margin: 0 8px; font-weight: 600; }
+        .footer a:hover { text-decoration: underline; }
+        .qr-container { background: white; display: inline-block; padding: 12px; border-radius: 28px; margin: 20px auto; width: 160px; height: 160px; text-align: center; line-height: normal; border: 1px solid #FFD9D9; }
+        @media (max-width: 768px) { .header h1 { font-size: 2rem; } .pros-cons { grid-template-columns: 1fr; } .step { flex-direction: column; align-items: flex-start; gap: 12px; } }
+    </style>
+</head>
+<body>
+<div class="header">
+    <div class="container">
+        <h1>КАРЬЕРНЫЙ <span style="color:#7AA9C4;">НАВИГАТОР</span></h1>
+        <p>Ветеринарный врач — призвание, знания и забота о тех, кто не может сказать сам</p>
+        <div class="hero-image"><span>🐄</span> <span>🐕</span> <span>🐈</span> <span>🐇</span> <span>🐁</span> <span>🦜</span> <span>👩‍⚕️</span></div>
+        <a href="#requirements" class="btn">🐾 Узнать больше</a>
+    </div>
+</div>
+
+<main class="container">
+    <section>
+        <div class="section-title">Кто такой ветеринарный врач?</div>
+        <div style="background: white; border-radius: 48px; padding: 32px; text-align: center;">
+            Специалист по диагностике, лечению и профилактике заболеваний животных. Работает в клиниках, на фермах, в зоопарках, лабораториях.
+            <div style="display: flex; justify-content: center; gap: 20px; margin-top: 24px; flex-wrap: wrap;">
+                <span style="background: #FFEFEF; padding: 8px 20px; border-radius: 40px;">🏥 Ветклиники</span>
+                <span style="background: #FFEFEF; padding: 8px 20px; border-radius: 40px;">🚜 Сельское хозяйство</span>
+                <span style="background: #FFEFEF; padding: 8px 20px; border-radius: 40px;">🦁 Зоопарки</span>
+                <span style="background: #FFEFEF; padding: 8px 20px; border-radius: 40px;">🔬 Лаборатории</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="requirements">
+        <div class="section-title">5 ключевых требований</div>
+        <div class="cards-grid">
+            <div class="card blue"><div class="card-icon">📚</div><h3>Проф. знания</h3><ul><li>Анатомия и физиология</li><li>Пат. анатомия, фармакология</li><li>Вет. законодательство</li><li>Эпизоотология</li></ul></div>
+            <div class="card green"><div class="card-icon">💉</div><h3>Навыки</h3><ul><li>Клинический осмотр</li><li>Забор анализов</li><li>Вакцинация, хирургия</li><li>Реанимация</li></ul></div>
+            <div class="card yellow"><div class="card-icon">❤️</div><h3>Личные качества</h3><ul><li>Стрессоустойчивость</li><li>Эмпатия</li><li>Ответственность</li><li>Коммуникабельность</li></ul></div>
+            <div class="card orange"><div class="card-icon">⏳</div><h3>Опыт</h3><ul><li>Стажировка 6-12 мес.</li><li>Разные виды животных</li><li>Приём от 1 года</li><li>Ведущий — от 3 лет</li></ul></div>
+            <div class="card purple"><div class="card-icon">🎓</div><h3>Образование</h3><ul><li>Высшее 5-6 лет</li><li>Ординатура</li><li>Курсы ПК</li><li>Сертификаты</li></ul></div>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-title">Карьерный трек 🪜</div>
+        <div class="career-ladder">
+            <div class="step"><span class="step-name">1. Санитар</span><span class="step-salary">от 35 000 ₽</span></div><div class="arrow-up">⬆️</div>
+            <div class="step"><span class="step-name">2. Фельдшер</span><span class="step-salary">от 50 000 ₽</span></div><div class="arrow-up">⬆️</div>
+            <div class="step"><span class="step-name">3. Ветеринарный врач</span><span class="step-salary">от 70 000 ₽</span></div><div class="arrow-up">⬆️</div>
+            <div class="step"><span class="step-name">4. Ведущий врач</span><span class="step-salary">от 100 000 ₽</span></div><div class="arrow-up">⬆️</div>
+            <div class="step"><span class="step-name">5. Главный врач / Владелец</span><span class="step-salary">от 150 000 ₽</span></div>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-title">Рынок труда</div>
+        <div class="stats-grid">
+            <div class="stat-card"><div class="stat-number">4000+</div><div>вакансий</div></div>
+            <div class="stat-card"><div class="stat-number">5-6 лет</div><div>обучения</div></div>
+            <div class="stat-card"><div class="stat-number">50-80 тыс.</div><div>ср. зарплата</div></div>
+            <div class="stat-card"><div class="stat-number">+15%</div><div>рост рынка</div></div>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-title">Плюсы и минусы профессии</div>
+        <div class="pros-cons">
+            <div class="pros"><h3>✅ Плюсы</h3><ul><li>Высокая востребованность и стабильный спрос на специалистов</li><li>Благородная миссия — помощь животным и моральное удовлетворение</li><li>Разнообразная и интересная работа, каждый случай уникален</li><li>Большие возможности для узкой специализации и карьерного роста</li><li>Уникальный опыт общения с разными видами животных</li></ul></div>
+            <div class="cons"><h3>⚠️ Минусы</h3><ul><li>Высокий риск эмоционального выгорания и профессионального стресса</li><li>Значительные физические нагрузки и ненормированный рабочий график</li><li>Риск травм и заражения от животных</li><li>Высокая стоимость и сложность обучения</li><li>Огромная ответственность за жизнь и здоровье животных</li></ul></div>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-title">Где учиться на ветеринара? ТОП-10 вузов</div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap:20px;">
+            <div style="background:white; border-radius:28px; padding:20px; box-shadow: 0 4px 8px rgba(0,0,0,0.05);"><strong>🐾 РГАУ-МСХА им. К.А. Тимирязева</strong><br>Москва, лидер рейтинга RAEX-2025</div>
+            <div style="background:white; border-radius:28px; padding:20px; box-shadow: 0 4px 8px rgba(0,0,0,0.05);"><strong>🐾 СПбГУВМ</strong><br>Санкт-Петербург, проходной балл ~82, 361 бюджетное место</div>
+            <div style="background:white; border-radius:28px; padding:20px; box-shadow: 0 4px 8px rgba(0,0,0,0.05);"><strong>🐾 МВА им. К.И. Скрябина</strong><br>Москва, ведущая академия ветеринарной медицины</div>
+            <div style="background:white; border-radius:28px; padding:20px; box-shadow: 0 4px 8px rgba(0,0,0,0.05);"><strong>🐾 РУДН</strong><br>Москва, стабильно входит в рейтинги лучших вузов по ветеринарии</div>
+            <div style="background:white; border-radius:28px; padding:20px; box-shadow: 0 4px 8px rgba(0,0,0,0.05);"><strong>🐾 НГАУ</strong><br>Новосибирск, входит в ТОП-10 по направлению «Ветеринария и зоотехния»</div>
+            <div style="background:white; border-radius:28px; padding:20px; box-shadow: 0 4px 8px rgba(0,0,0,0.05);"><strong>🐾 Казанская академия ветеринарной медицины</strong><br>Казань, один из старейших профильных вузов</div>
+            <div style="background:white; border-radius:28px; padding:20px; box-shadow: 0 4px 8px rgba(0,0,0,0.05);"><strong>🐾 Кубанский ГАУ</strong><br>Краснодар, входит в рейтинг лучших ветеринарных вузов 2025 года</div>
+            <div style="background:white; border-radius:28px; padding:20px; box-shadow: 0 4px 8px rgba(0,0,0,0.05);"><strong>🐾 УрГАУ</strong><br>Екатеринбург, сильная ветеринарная школа на Урале</div>
+            <div style="background:white; border-radius:28px; padding:20px; box-shadow: 0 4px 8px rgba(0,0,0,0.05);"><strong>🐾 Ставропольский ГАУ</strong><br>Ставрополь, представлен в рейтинге лучших вузов по ветеринарии</div>
+            <div style="background:white; border-radius:28px; padding:20px; box-shadow: 0 4px 8px rgba(0,0,0,0.05);"><strong>🐾 ДГТУ</strong><br>Ростов-на-Дону, входит в число ведущих вузов по версии RAEX</div>
+        </div>
+    </section>
+
+    <section>
+        <div class="test-block">
+            <h3>🧐 Подходит ли вам профессия?</h3>
+            <div id="test">
+                <div class="test-question"><p>1. Любите животных?</p><label><input type="radio" name="q1" value="yes"> Да</label> <label><input type="radio" name="q1" value="neutral"> Нормально</label> <label><input type="radio" name="q1" value="no"> Нет</label></div>
+                <div class="test-question"><p>2. Готовы к ненормированному графику?</p><label><input type="radio" name="q2" value="yes"> Да</label> <label><input type="radio" name="q2" value="neutral"> Иногда</label> <label><input type="radio" name="q2" value="no"> Нет</label></div>
+                <div class="test-question"><p>3. Быстро принимаете решения в стрессе?</p><label><input type="radio" name="q3" value="yes"> Да</label> <label><input type="radio" name="q3" value="neutral"> Скорее да</label> <label><input type="radio" name="q3" value="no"> Трудно</label></div>
+                <div class="test-question"><p>4. Готовы учиться 5-6 лет?</p><label><input type="radio" name="q4" value="yes"> Да</label> <label><input type="radio" name="q4" value="neutral"> Возможно</label> <label><input type="radio" name="q4" value="no"> Нет</label></div>
+                <button onclick="calculateResult()">Узнать результат</button>
+                <div id="testResult" class="test-result"></div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<div class="footer">
+    <div class="container">
+        <p>🐾 Проект «Карьерный навигатор» | Команда VetGuide 🐾</p>
+        <div style="margin: 20px 0;">
+            <!-- ГИПЕРССЫЛКИ НА ВСЕ МАТЕРИАЛЫ ПРОЕКТА -->
+            <a href="infografika.html" target="_blank">📊 Инфографика</a> |
+            <a href="referat_30.html" target="_blank">📄 Реферат</a> |
+            <a href="presentation_20_slides.html" target="_blank">📽️ Презентация</a>
+        </div>
+        <div class="qr-container" id="qrcode"></div>
+        <p style="margin-top: 16px;">📧 <a href="mailto:kime78602@gmail.com">kime78602@gmail.com</a></p>
+        <p style="font-size:0.9rem;">🔍 Отсканируйте QR-код, чтобы написать нам на почту</p>
+    </div>
+</div>
+
+<script>
+    new QRCode(document.getElementById("qrcode"), {
+        text: "mailto:kime78602@gmail.com",
+        width: 136,
+        height: 136,
+        colorDark: "#E27E8F",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+    });
+    function calculateResult() {
+        let score = 0, answered = 0;
+        ['q1','q2','q3','q4'].forEach(q => {
+            let sel = document.querySelector(`input[name="${q}"]:checked`);
+            if(sel) { answered++; if(sel.value === 'yes') score+=2; else if(sel.value === 'neutral') score+=1; }
+        });
+        let resDiv = document.getElementById('testResult');
+        if(answered<4) { resDiv.innerHTML = "Ответьте на все вопросы!"; return; }
+        if(score>=6) resDiv.innerHTML = "✅ Поздравляем! Ветеринария — ваше призвание!";
+        else if(score>=3) resDiv.innerHTML = "🤔 Вы можете стать хорошим специалистом, но будьте готовы к трудностям.";
+        else resDiv.innerHTML = "⚠️ Возможно, эта профессия потребует слишком многого. Рассмотрите смежные направления.";
+    }
+</script>
+</body>
+</html>
