@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Инфографика | Ветеринарный врач</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #FFF9F9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .infographic {
+            max-width: 1080px;
+            width: 100%;
+            background: #FFF9F9;
+            border-radius: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+        /* Повторяем стили из SVG, но в HTML */
+        .header {
+            background: linear-gradient(135deg, #FFD9E6 0%, #C5E4FF 100%);
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+        }
+        .header h1 { font-size: 2.5rem; color: #6B4E4E; }
+        .header p { font-size: 1.5rem; color: #E27E8F; font-weight: 700; margin-top: 8px; }
+        .hero { display: flex; justify-content: center; gap: 20px; font-size: 3rem; margin-top: 20px; flex-wrap: wrap; }
+        .block { padding: 20px; margin: 20px; border-radius: 32px; }
+        .block-icon { font-size: 2.5rem; display: inline-block; margin-right: 15px; vertical-align: middle; }
+        .block-title { font-size: 1.6rem; font-weight: 800; display: inline-block; vertical-align: middle; }
+        .block-list { margin-top: 15px; list-style: none; }
+        .block-list li { margin: 8px 0; padding-left: 24px; position: relative; }
+        .block-list li::before { content: "🌸"; position: absolute; left: 0; }
+        .blue { background: #E0F0FF; color: #4A6A8A; }
+        .green { background: #E0F7E8; color: #4A6A5A; }
+        .yellow { background: #FFF2DD; color: #8A6A4A; }
+        .orange { background: #FFE4D6; color: #A56A4A; }
+        .purple { background: #F0E0FF; color: #6A4A8A; }
+        .career { background: #FFFAF0; margin: 20px; padding: 20px; border-radius: 32px; }
+        .step { display: flex; justify-content: space-between; background: white; margin: 10px 0; padding: 12px 20px; border-radius: 60px; border: 1px solid #FFD9D9; }
+        .stats { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px; }
+        .stat { background: white; border-radius: 28px; padding: 20px; text-align: center; flex: 1; min-width: 150px; border: 1px solid #FFE0E0; }
+        .stat-number { font-size: 2rem; font-weight: 800; color: #7AA9C4; }
+        .pros-cons { display: flex; gap: 20px; margin: 20px; flex-wrap: wrap; }
+        .pros, .cons { flex: 1; background: white; border-radius: 28px; padding: 20px; border: 1px solid #FFE4E4; }
+        .pros h3, .cons h3 { color: #E27E8F; margin-bottom: 15px; }
+        .pros li, .cons li { list-style: none; padding-left: 24px; position: relative; margin: 8px 0; }
+        .pros li::before { content: "🐶"; position: absolute; left: 0; }
+        .cons li::before { content: "🐱"; position: absolute; left: 0; }
+        .universities { background: #F0E0FF; margin: 20px; padding: 20px; border-radius: 32px; text-align: center; }
+        .uni-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 15px; }
+        .uni-item { background: white; border-radius: 28px; padding: 10px 15px; font-size: 0.9rem; flex: 1 1 200px; }
+        .footer { background: #FFEFEF; text-align: center; padding: 30px; margin-top: 20px; }
+        .qr { display: inline-block; background: white; padding: 12px; border-radius: 28px; width: 140px; height: 140px; margin: 15px auto; }
+        @media (max-width: 700px) { .step { flex-direction: column; gap: 8px; } .pros-cons { flex-direction: column; } }
+    </style>
+</head>
+<body>
+<div class="infographic">
+    <div class="header">
+        <h1>КАРЬЕРНЫЙ НАВИГАТОР</h1>
+        <p>Ветеринарный врач</p>
+        <div class="hero">
+            <span>🐄</span> <span>🐕</span> <span>🐈</span> <span>🐇</span> <span>🐁</span> <span>🦜</span> <span>👩‍⚕️</span>
+        </div>
+    </div>
+
+    <!-- 5 блоков -->
+    <div class="block blue">
+        <span class="block-icon">📚</span><span class="block-title">Профессиональные знания</span>
+        <ul class="block-list">
+            <li>Анатомия и физиология животных</li>
+            <li>Пат. анатомия, фармакология, вет. законодательство</li>
+            <li>Эпизоотология, диагностика болезней</li>
+        </ul>
+    </div>
+    <div class="block green">
+        <span class="block-icon">💉</span><span class="block-title">Практические навыки</span>
+        <ul class="block-list">
+            <li>Клинический осмотр, забор анализов</li>
+            <li>Вакцинация, хирургия, швы</li>
+            <li>Реанимация (ИВЛ), ветсанэкспертиза</li>
+        </ul>
+    </div>
+    <div class="block yellow">
+        <span class="block-icon">❤️</span><span class="block-title">Личные качества</span>
+        <ul class="block-list">
+            <li>Стрессоустойчивость, эмпатия без выгорания</li>
+            <li>Ответственность, аккуратность, коммуникабельность</li>
+        </ul>
+    </div>
+    <div class="block orange">
+        <span class="block-icon">⏳</span><span class="block-title">Опыт работы</span>
+        <ul class="block-list">
+            <li>Стажировка 6-12 мес., работа с разными видами</li>
+            <li>Самостоятельный приём от 1 года</li>
+            <li>Ведущий врач — от 3 лет</li>
+        </ul>
+    </div>
+    <div class="block purple">
+        <span class="block-icon">🎓</span><span class="block-title">Образование</span>
+        <ul class="block-list">
+            <li>Высшее (специалитет, 5-6 лет), ординатура</li>
+            <li>Курсы ПК, сертификаты: УЗИ, рентген, эндоскопия</li>
+        </ul>
+    </div>
+
+    <!-- Карьерная лестница -->
+    <div class="career">
+        <h3 style="text-align:center; color:#E27E8F;">📈 Карьерная лестница</h3>
+        <div class="step"><span>1. Санитар</span><span>от 35 000 ₽</span></div>
+        <div style="text-align:center; font-size:1.5rem;">⬆️</div>
+        <div class="step"><span>2. Фельдшер</span><span>от 50 000 ₽</span></div>
+        <div style="text-align:center; font-size:1.5rem;">⬆️</div>
+        <div class="step"><span>3. Ветеринарный врач</span><span>от 70 000 ₽</span></div>
+        <div style="text-align:center; font-size:1.5rem;">⬆️</div>
+        <div class="step"><span>4. Ведущий врач</span><span>от 100 000 ₽</span></div>
+        <div style="text-align:center; font-size:1.5rem;">⬆️</div>
+        <div class="step"><span>5. Главный врач / Владелец клиники</span><span>от 150 000 ₽</span></div>
+    </div>
+
+    <!-- Цифры -->
+    <div class="stats">
+        <div class="stat"><div class="stat-number">4000+</div><div>вакансий</div></div>
+        <div class="stat"><div class="stat-number">5-6 лет</div><div>обучения</div></div>
+        <div class="stat"><div class="stat-number">50-80 тыс.</div><div>ср. зарплата</div></div>
+        <div class="stat"><div class="stat-number">+15%</div><div>рост рынка</div></div>
+    </div>
+
+    <!-- Плюсы/минусы -->
+    <div class="pros-cons">
+        <div class="pros"><h3>✅ Плюсы</h3><ul><li>Высокая востребованность</li><li>Благородная миссия</li><li>Разнообразие и карьерный рост</li><li>Узкая специализация</li></ul></div>
+        <div class="cons"><h3>⚠️ Минусы</h3><ul><li>Риск выгорания и стресс</li><li>Физические нагрузки</li><li>Ненормированный график</li><li>Ответственность за жизнь</li></ul></div>
+    </div>
+
+    <!-- ТОП-3 вуза -->
+    <div class="universities">
+        <h3 style="color:#6A4A8A;">🏫 ТОП-3 вуза по версии RAEX-2025</h3>
+        <div class="uni-list">
+            <div class="uni-item">1. РГАУ-МСХА им. Тимирязева (Москва)</div>
+            <div class="uni-item">2. СПбГУВМ (Санкт-Петербург)</div>
+            <div class="uni-item">3. МВА им. Скрябина (Москва)</div>
+        </div>
+    </div>
+
+    <!-- Футер с QR-кодом -->
+    <div class="footer">
+        <p>Проект «Карьерный навигатор» | Команда VetGuide</p>
+        <p>📧 kime78602@gmail.com</p>
+        <div id="qr-infographic" class="qr"></div>
+        <p style="font-size:0.8rem;">Отсканируйте QR-код, чтобы написать нам</p>
+    </div>
+</div>
+
+<script>
+    new QRCode(document.getElementById("qr-infographic"), {
+        text: "mailto:kime78602@gmail.com",
+        width: 116,
+        height: 116,
+        colorDark: "#E27E8F",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+    });
+</script>
+</body>
+</html>

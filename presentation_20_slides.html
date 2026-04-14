@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Профстандарт | Ветеринарный врач (20 слайдов)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #D0E5F0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .presentation-container {
+            max-width: 1280px;
+            width: 100%;
+            background: #F5FBFE;
+            border-radius: 48px;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+        .slides-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+        .slides {
+            display: flex;
+            transition: transform 0.4s ease-in-out;
+        }
+        .slide {
+            flex: 0 0 100%;
+            min-height: 70vh;
+            padding: 48px 56px;
+            background: #F5FBFE;
+            position: relative;
+        }
+        h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #2C7DA0, #5FA3C2);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 24px;
+        }
+        h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #2C7DA0;
+            margin-bottom: 28px;
+            border-left: 6px solid #89C2D9;
+            padding-left: 24px;
+        }
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 24px 0 16px;
+            color: #2C3E50;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin: 24px 0;
+        }
+        .card {
+            background: white;
+            border-radius: 32px;
+            padding: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid #D4E6F1;
+        }
+        .card-icon {
+            font-size: 2.8rem;
+            margin-bottom: 12px;
+        }
+        .card h4 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: #2C7DA0;
+        }
+        .list-styled {
+            list-style: none;
+        }
+        .list-styled li {
+            margin: 12px 0;
+            padding-left: 28px;
+            position: relative;
+        }
+        .list-styled li::before {
+            content: "❄️";
+            position: absolute;
+            left: 0;
+        }
+        .step {
+            display: flex;
+            justify-content: space-between;
+            background: white;
+            padding: 16px 24px;
+            margin: 12px 0;
+            border-radius: 60px;
+            border: 1px solid #D4E6F1;
+            font-weight: 600;
+        }
+        .two-columns {
+            display: flex;
+            gap: 30px;
+            margin: 20px 0;
+        }
+        .edu-col {
+            flex: 1;
+            background: white;
+            border-radius: 28px;
+            padding: 24px;
+            border: 1px solid #D4E6F1;
+            transition: 0.2s;
+        }
+        .edu-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .edu-col ul {
+            list-style: none;
+        }
+        .edu-col li {
+            margin: 12px 0;
+            padding-left: 24px;
+            position: relative;
+        }
+        .edu-col li::before {
+            content: "🎓";
+            position: absolute;
+            left: 0;
+        }
+        .pros, .cons {
+            flex: 1;
+            background: white;
+            border-radius: 28px;
+            padding: 24px;
+            border: 1px solid #D4E6F1;
+        }
+        .pros li, .cons li {
+            list-style: none;
+            margin: 12px 0;
+            padding-left: 28px;
+            position: relative;
+        }
+        .pros li::before { content: "🐧"; position: absolute; left: 0; }
+        .cons li::before { content: "🐻‍❄️"; position: absolute; left: 0; }
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin: 32px 0;
+        }
+        .stat {
+            background: white;
+            border-radius: 28px;
+            padding: 24px;
+            text-align: center;
+            flex: 1;
+            min-width: 160px;
+            border: 1px solid #C9E4F0;
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #3B8DBD;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            background: #E6F2F9;
+            border-top: 1px solid #C9E4F0;
+        }
+        .nav-btn {
+            background: #89C2D9;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+            color: #1E4A6E;
+        }
+        .nav-btn:hover {
+            background: #5FA3C2;
+            color: white;
+        }
+        .slide-indicator {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #4A7C9C;
+            padding: 12px 0 20px;
+        }
+        @media (max-width: 800px) {
+            .slide { padding: 28px; }
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+            .two-columns { flex-direction: column; }
+        }
+        .animal-deco {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 80px;
+            opacity: 0.08;
+            pointer-events: none;
+        }
+        .small-text {
+            font-size: 0.85rem;
+            color: #5A7D9A;
+        }
+    </style>
+</head>
+<body>
+<div class="presentation-container">
+    <div class="slides-wrapper">
+        <div class="slides" id="slides">
+            <!-- Слайд 1: Титул -->
+            <div class="slide">
+                <div style="text-align: center; margin-top: 10vh;">
+                    <h1 style="font-size: 3.5rem;">ПРОФЕССИОНАЛЬНЫЙ СТАНДАРТ</h1>
+                    <p style="font-size: 1.8rem; color: #2C7DA0; font-weight: 700;">«Работник в области ветеринарии»</p>
+                    <div style="font-size: 4rem; margin: 40px 0;">🐄 🐕 🐈 🐇 🦜 🐧</div>
+                    <p style="font-size: 1.1rem;">Приказ Минтруда России от 12.10.2021 N 712н</p>
+                    <p>Действует до 1 марта 2028 года</p>
+                    <p style="margin-top: 32px;">Проект «Карьерный навигатор» | Команда VetGuide</p>
+                </div>
+                <div class="animal-deco">🐾❄️🐾</div>
+            </div>
+
+            <!-- Слайд 2: Общие сведения + обобщённые трудовые функции -->
+            <div class="slide">
+                <h2>📄 Общие сведения и уровни квалификации</h2>
+                <div class="card" style="background: #EFF7FC; margin-bottom: 24px;">
+                    <p><strong>Основная цель:</strong> сохранение здоровья и жизни животных, обеспечение ветеринарной безопасности.</p>
+                    <p><strong>ОКВЭД:</strong> 75.00 — Ветеринарная деятельность. <strong>ОКЗ:</strong> 2250 — Ветеринарные врачи.</p>
+                </div>
+                <div class="grid-2">
+                    <div class="card"><div class="card-icon">🧹</div><h4>Ветеринарный санитар</h4><p>Уровень 3-4. Санитарная обработка, уборка, помощь при процедурах.</p></div>
+                    <div class="card"><div class="card-icon">💊</div><h4>Ветеринарный фельдшер</h4><p>Уровень 5. Среднее проф. образование, самостоятельный приём простых случаев.</p></div>
+                    <div class="card"><div class="card-icon">🩺</div><h4>Ветеринарный врач</h4><p>Уровень 6-7. Высшее образование, полный цикл диагностики и лечения.</p></div>
+                    <div class="card"><div class="card-icon">🏆</div><h4>Ведущий / Главный ветврач</h4><p>Уровень 7. Руководство, экспертиза, опыт от 3 лет.</p></div>
+                </div>
+            </div>
+
+            <!-- Слайд 3: Трудовые функции (коды) + профессиональные знания -->
+            <div class="slide">
+                <h2>🔬 Трудовые функции и профессиональные знания</h2>
+                <div class="two-columns">
+                    <div class="edu-col">
+                        <h3>📋 Трудовые функции (уровень 7)</h3>
+                        <ul>
+                            <li><strong>G/01.7</strong> – Клиническое обследование животных</li>
+                            <li><strong>G/02.7</strong> – Лечение больных животных</li>
+                            <li><strong>G/03.7</strong> – Ветеринарно-санитарная экспертиза</li>
+                            <li><strong>F/01.6 – F/03.6</strong> – Экспертиза сырья и продуктов</li>
+                            <li>Противоэпизоотические мероприятия</li>
+                        </ul>
+                    </div>
+                    <div class="edu-col">
+                        <h3>📚 Профессиональные знания</h3>
+                        <ul>
+                            <li>Анатомия, физиология, гистология, эмбриология</li>
+                            <li>Патологическая анатомия, физиология</li>
+                            <li>Фармакология, токсикология, микробиология</li>
+                            <li>Ветеринарное законодательство, ветсанэкспертиза</li>
+                            <li>Эпизоотология, инфекционные и незаразные болезни</li>
+                            <li>Акушерство, гинекология, хирургия, онкология</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Слайд 4: Практические навыки -->
+            <div class="slide">
+                <h2>💉 Практические навыки и умения</h2>
+                <ul class="list-styled">
+                    <li>Сбор анамнеза, клинический осмотр (пальпация, перкуссия, аускультация)</li>
+                    <li>Забор биоматериала (кровь, моча, кал, мазки)</li>
+                    <li>Проведение лабораторных исследований (ОАК, биохимия, ПЦР)</li>
+                    <li>Интерпретация УЗИ, рентгена, эндоскопии</li>
+                    <li>Вакцинация, дегельминтизация, чипирование</li>
+                    <li>Хирургические операции (кастрация, лапаротомия, остеосинтез)</li>
+                    <li>Наложение швов, иммобилизация переломов, реанимация (ИВЛ, массаж сердца)</li>
+                    <li>Ветеринарно-санитарная экспертиза продуктов и сырья</li>
+                </ul>
+            </div>
+
+            <!-- Слайд 5: Требования к образованию (улучшенный стиль) -->
+            <div class="slide">
+                <h2>🎓 Требования к образованию</h2>
+                <div class="two-columns">
+                    <div class="edu-col"><h3>🧹 Санитар</h3><ul><li>Профессиональное обучение (3-6 мес.)</li></ul></div>
+                    <div class="edu-col"><h3>💊 Фельдшер</h3><ul><li>Среднее профессиональное образование, 2-3 года</li></ul></div>
+                </div>
+                <div class="two-columns">
+                    <div class="edu-col"><h3>🩺 Ветеринарный врач</h3><ul><li>Высшее образование – специалитет 5-6 лет</li><li>Интернатура/ординатура 1-2 года</li></ul></div>
+                    <div class="edu-col"><h3>🏆 Ведущий / Главный врач</h3><ul><li>Высшее + повышение квалификации (курсы от 250 ч)</li><li>Сертификат специалиста или аккредитация</li></ul></div>
+                </div>
+                <p class="small-text" style="margin-top: 16px; text-align: center;">🔹 Дополнительные сертификаты: УЗИ, рентген, эндоскопия, хирургия.</p>
+            </div>
+
+            <!-- Слайд 6: Требования к опыту работы -->
+            <div class="slide">
+                <h2>⏳ Требования к опыту работы</h2>
+                <div class="two-columns">
+                    <div class="edu-col"><h3>🧹 Санитар</h3><ul><li>Без опыта или стажировка</li></ul></div>
+                    <div class="edu-col"><h3>💊 Фельдшер</h3><ul><li>Опыт от 1 года</li></ul></div>
+                </div>
+                <div class="two-columns">
+                    <div class="edu-col"><h3>🩺 Ветеринарный врач</h3><ul><li>Стажировка 6-12 месяцев</li><li>Для самостоятельного приёма – от 1 года</li></ul></div>
+                    <div class="edu-col"><h3>🏆 Ведущий / Эксперт</h3><ul><li>Опыт от 3 лет (для эксперта – от 2 лет экспертизы)</li></ul></div>
+                </div>
+                <div class="card" style="margin-top: 20px;"><p>📌 Стаж подтверждается трудовой книжкой, портфолио или отзывом клиники.</p></div>
+            </div>
+
+            <!-- Слайд 7: Аккредитация, сертификация и НПР -->
+            <div class="slide">
+                <h2>📜 Аккредитация, сертификация и НПР</h2>
+                <ul class="list-styled">
+                    <li>С 2026 – первичная специализированная аккредитация (портфолио, тестирование, симуляция)</li>
+                    <li>Сертификат специалиста – бессрочный при регулярном повышении квалификации</li>
+                    <li>Периодическая аккредитация – каждые 5 лет</li>
+                    <li><strong>Непрерывное профессиональное развитие (НПР):</strong> 36 ЗЕТ в год (вебинары, конференции, публикации, стажировки)</li>
+                    <li>Платформы: Vetandlife, Webinar.vet, Росветобъединение</li>
+                </ul>
+            </div>
+
+            <!-- Слайд 8: Симуляционное обучение и международные стажировки -->
+            <div class="slide">
+                <h2>🩻 Симуляционное обучение и стажировки</h2>
+                <div class="two-columns">
+                    <div class="edu-col"><h3>🖥️ Симуляционное обучение</h3><ul><li>Тренировка на фантомах и биоманекенах (лапароскопия, УЗИ, реанимация)</li><li>Симуляционные центры при вузах (МВА, СПбГУВМ, Тимирязевская академия)</li></ul></div>
+                    <div class="edu-col"><h3>🌍 Международные стажировки</h3><ul><li>EAEVE – аккредитованные программы</li><li>Страны: Германия, Нидерланды, США</li><li>Гранты: Erasmus+, DAAD, Fulbright</li></ul></div>
+                </div>
+            </div>
+
+            <!-- Слайд 9: Личные качества -->
+            <div class="slide">
+                <h2>❤️ Личные качества (soft skills)</h2>
+                <div class="two-columns">
+                    <div class="pros"><h3>Необходимы</h3><ul><li>Стрессоустойчивость</li><li>Эмпатия без выгорания</li><li>Ответственность</li><li>Аккуратность, терпение</li><li>Быстрота решений</li><li>Коммуникабельность</li></ul></div>
+                    <div class="cons"><h3>Желательны</h3><ul><li>Аналитическое мышление</li><li>Работа в команде</li><li>Обучаемость</li><li>Физическая выносливость</li></ul></div>
+                </div>
+            </div>
+
+            <!-- Слайд 10: Профессиональная этика и общение с владельцами -->
+            <div class="slide">
+                <h2>🤝 Профессиональная этика и общение</h2>
+                <ul class="list-styled">
+                    <li>Соблюдение врачебной тайны</li>
+                    <li>Доступное объяснение диагноза, лечения, прогнозов</li>
+                    <li>Работа с эмоциональными или агрессивными владельцами</li>
+                    <li>Информированное согласие на процедуры</li>
+                    <li>Эвтаназия – строго по показаниям и с согласия владельца</li>
+                </ul>
+            </div>
+
+            <!-- Слайд 11: Экзотические/продуктивные животные + госветнадзор -->
+            <div class="slide">
+                <h2>🦎 Экзотические животные и госветнадзор</h2>
+                <div class="two-columns">
+                    <div class="edu-col"><h3>🦎 Экзотические</h3><ul><li>Рептилии, птицы, грызуны, хорьки – особенности анестезии, питания, диагностики</li></div>
+                    <div class="edu-col"><h3>🐄 Продуктивные</h3><ul><li>КРС, свиньи, овцы, козы – работа с крупными животными, профилактика эпизоотий</li></ul></div>
+                </div>
+                <h3>🏛️ Государственный ветеринарный надзор</h3>
+                <ul class="list-styled">
+                    <li>Проверка соблюдения законодательства, контроль лекарств, экспертиза продукции</li>
+                    <li>Выдача ветеринарных сопроводительных документов, расследование вспышек болезней</li>
+                </ul>
+            </div>
+
+            <!-- Слайд 12: Научная деятельность и работа в ЧС -->
+            <div class="slide">
+                <h2>📖 Научная деятельность и чрезвычайные ситуации</h2>
+                <div class="two-columns">
+                    <div class="edu-col"><h3>🔬 Научная деятельность</h3><ul><li>Участие в конференциях (РВО, WSAVA)</li><li>Публикации в журналах («Ветеринария», RVJ)</li><li>Собственные исследования, наставничество</li></ul></div>
+                    <div class="edu-col"><h3>🚨 Работа в ЧС</h3><ul><li>Ликвидация последствий стихийных бедствий, спасение животных</li><li>Вспышки инфекций – карантин, вакцинация</li><li>Сотрудничество с МЧС, помощь при ДТП</li></ul></div>
+                </div>
+            </div>
+
+            <!-- Слайд 13: Цифровизация ветеринарии -->
+            <div class="slide">
+                <h2>💻 Цифровые технологии в ветеринарии</h2>
+                <ul class="list-styled">
+                    <li>Электронные медицинские карты (VetManager, VetUnion, Clinicloud)</li>
+                    <li>Телемедицина (удалённые консультации)</li>
+                    <li>Искусственный интеллект в диагностике (анализ рентгеновских снимков)</li>
+                    <li>Мобильные приложения для напоминания о вакцинации</li>
+                    <li>Носимые устройства для мониторинга состояния животных</li>
+                </ul>
+            </div>
+
+            <!-- Слайд 14: Послевузовское обучение и профессиональные сообщества -->
+            <div class="slide">
+                <h2>🎓 Послевузовское обучение и сообщества</h2>
+                <div class="two-columns">
+                    <div class="edu-col"><h3>📚 Интернатура/ординатура</h3><ul><li>Интернатура (1 год) – практика под контролем</li><li>Ординатура (2 года) – углублённая специализация (хирургия, терапия, онкология)</li><li>После – сертификат специалиста</li></ul></div>
+                    <div class="edu-col"><h3>🤝 Профессиональные сообщества</h3><ul><li>Российская ветеринарная ассоциация (РВА)</li><li>Общество ветеринарных хирургов (РОВС)</li><li>АПВВ, WSAVA, WAVMA, WVA</li></ul></div>
+                </div>
+            </div>
+
+            <!-- Слайд 15: Охрана труда и техника безопасности -->
+            <div class="slide">
+                <h2>🛡️ Охрана труда и техника безопасности</h2>
+                <ul class="list-styled">
+                    <li>Использование СИЗ (халаты, перчатки, маски, очки)</li>
+                    <li>Правила фиксации агрессивных животных</li>
+                    <li>Обработка инструментов и поверхностей дезсредствами</li>
+                    <li>Вакцинация против бешенства, столбняка, гепатита</li>
+                    <li>Утилизация биологических отходов</li>
+                </ul>
+            </div>
+
+            <!-- Слайд 16: Карьерная лестница и зарплаты -->
+            <div class="slide">
+                <h2>📈 Карьерная лестница (средние зарплаты, РФ)</h2>
+                <div class="step"><span>1. Ветеринарный санитар</span><span>от 35 000 ₽</span></div>
+                <div class="step"><span>2. Ветеринарный фельдшер</span><span>от 50 000 ₽</span></div>
+                <div class="step"><span>3. Ветеринарный врач</span><span>от 70 000 ₽</span></div>
+                <div class="step"><span>4. Ведущий ветеринарный врач</span><span>от 100 000 ₽</span></div>
+                <div class="step"><span>5. Главный врач / Владелец клиники</span><span>от 150 000 ₽</span></div>
+            </div>
+
+            <!-- Слайд 17: Рынок труда и меры поддержки -->
+            <div class="slide">
+                <h2>🔢 Рынок труда: цифры и господдержка</h2>
+                <div class="stats">
+                    <div class="stat"><div class="stat-number">4000+</div><div>вакансий на hh.ru</div></div>
+                    <div class="stat"><div class="stat-number">5-6 лет</div><div>срок обучения</div></div>
+                    <div class="stat"><div class="stat-number">50-80 тыс.</div><div>средняя зарплата</div></div>
+                    <div class="stat"><div class="stat-number">+15%</div><div>рост рынка 2025</div></div>
+                </div>
+                <p><strong>Меры поддержки:</strong> подъёмные до 500 000 ₽, компенсация жилья, льготная ипотека для сельских ветврачей.</p>
+            </div>
+
+            <!-- Слайд 18: Плюсы и минусы профессии -->
+            <div class="slide">
+                <h2>Плюсы и минусы профессии</h2>
+                <div class="two-columns">
+                    <div class="pros"><h3>✅ Плюсы</h3><ul><li>Высокая востребованность</li><li>Благородная миссия</li><li>Разнообразие специализаций</li><li>Возможность открыть свою клинику</li><li>Карьерный рост</li><li>Постоянное саморазвитие</li></ul></div>
+                    <div class="cons"><h3>⚠️ Минусы</h3><ul><li>Эмоциональное выгорание</li><li>Физические нагрузки</li><li>Ненормированный график</li><li>Риск травм и заражения</li><li>Ответственность за жизнь</li><li>Высокая стоимость обучения</li></ul></div>
+                </div>
+            </div>
+
+            <!-- Слайд 19: ТОП вузов и альтернативные пути -->
+            <div class="slide">
+                <h2>🏫 Где учиться? (ТОП вузов RAEX-2025)</h2>
+                <div class="grid-2">
+                    <div class="card"><h4>🐾 РГАУ-МСХА им. Тимирязева (Москва)</h4><p>Лидер рейтинга RAEX-2025</p></div>
+                    <div class="card"><h4>🐾 СПбГУВМ (Санкт-Петербург)</h4><p>Проходной балл ~82, 361 бюджетное место</p></div>
+                    <div class="card"><h4>🐾 МВА им. Скрябина (Москва)</h4><p>Ведущая академия</p></div>
+                    <div class="card"><h4>🐾 РУДН, НГАУ, Казанская академия, Кубанский ГАУ, УрГАУ, Ставропольский ГАУ, ДГТУ</h4><p>и другие топ-10 вузов</p></div>
+                </div>
+                <p class="small-text">* Альтернатива: курсы переподготовки на базе среднего медицинского образования (2-3 года).</p>
+            </div>
+
+            <!-- Слайд 20: Заключение -->
+            <div class="slide">
+                <h2>🚀 Будущее ветеринарии и ваш старт</h2>
+                <div style="background: #E6F2F9; border-radius: 48px; padding: 32px; text-align: center;">
+                    <p style="font-size: 1.3rem;">Профессия постоянно развивается: новые технологии, лекарства, методики.</p>
+                    <p style="margin-top: 20px;">Спрос на квалифицированных ветврачей будет только расти.</p>
+                    <p style="margin-top: 24px;">📧 <strong>kime78602@gmail.com</strong></p>
+                    <p>Проект «Карьерный навигатор» – ваш помощник в выборе пути.</p>
+                    <div style="margin-top: 32px; font-size: 3rem;">🐾❄️🐕🐈🐧🐄</div>
+                    <p class="small-text" style="margin-top: 24px;">Все данные основаны на профстандарте №712н и актуальной статистике.</p>
+                </div>
+                <div class="animal-deco">🐾❄️</div>
+            </div>
+        </div>
+    </div>
+    <div class="nav-buttons">
+        <button class="nav-btn" id="prevBtn">← Назад</button>
+        <button class="nav-btn" id="nextBtn">Вперёд →</button>
+    </div>
+    <div class="slide-indicator" id="indicator">Слайд 1 / 20</div>
+</div>
+
+<script>
+    const slides = document.getElementById('slides');
+    const slideCount = document.querySelectorAll('.slide').length;
+    let currentIndex = 0;
+
+    function updateSlider() {
+        const offset = -currentIndex * 100;
+        slides.style.transform = `translateX(${offset}%)`;
+        document.getElementById('indicator').innerText = `Слайд ${currentIndex+1} / ${slideCount}`;
+    }
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+        if (currentIndex < slideCount - 1) {
+            currentIndex++;
+            updateSlider();
+        }
+    });
+    document.getElementById('prevBtn').addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateSlider();
+        }
+    });
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') {
+            if (currentIndex < slideCount - 1) currentIndex++;
+            updateSlider();
+        } else if (e.key === 'ArrowLeft') {
+            if (currentIndex > 0) currentIndex--;
+            updateSlider();
+        }
+    });
+    updateSlider();
+</script>
+</body>
+</html>
